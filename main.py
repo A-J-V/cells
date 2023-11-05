@@ -1,4 +1,6 @@
 import game_of_life
+import seeds
+import ant
 import pygame
 import time
 import random
@@ -14,13 +16,22 @@ if __name__ == '__main__':
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
-    game = game_of_life.GameOfLife(size=SIZE,
-                                   display=display,
-                                   tile_size=TILE_SIZE,
-                                   cell_color=(r, g, b))
+    # game = game_of_life.GameOfLife(size=SIZE,
+    #                                display=display,
+    #                                tile_size=TILE_SIZE,
+    #                                cell_color=(r, g, b))
+    # game = seeds.Seeds(size=SIZE,
+    #                    display=display,
+    #                    tile_size=5,
+    #                    cell_color=(r, g, b))
+    game = ant.Ant(size=SIZE,
+                   display=display,
+                   tile_size=TILE_SIZE,
+                   cell_color=(r, g, b))
     while True:
-        time.sleep(0.1)
+        #time.sleep(0.05)
         game.display.fill((b//10, r//10, g//10))
-        game.iterate()
+        if game.iterate() == False:
+            break
         game.draw()
         pygame.display.update()
