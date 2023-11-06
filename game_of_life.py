@@ -37,6 +37,7 @@ class GameOfLife:
     def draw(self):
         for row in range(0, self.size):
             for col in range(0, self.size):
+                if self.state[col, row] == 0:
+                    continue
                 rect = pygame.Rect(row * self.tile_size, col * self.tile_size, self.tile_size - 1, self.tile_size - 1)
-                color = self.cell_color if self.state[col, row] == 1 else BLACK
-                self.display.fill(color=color, rect=rect)
+                self.display.fill(color=self.cell_color, rect=rect)

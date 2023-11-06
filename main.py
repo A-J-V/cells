@@ -1,6 +1,7 @@
 import game_of_life
 import seeds
 import ant
+import brain
 import pygame
 import time
 import random
@@ -24,14 +25,17 @@ if __name__ == '__main__':
     #                    display=display,
     #                    tile_size=5,
     #                    cell_color=(r, g, b))
-    game = ant.Ant(size=SIZE,
-                   display=display,
-                   tile_size=TILE_SIZE,
-                   cell_color=(r, g, b))
+    # game = ant.Ant(size=SIZE,
+    #                display=display,
+    #                tile_size=TILE_SIZE,
+    #                cell_color=(r, g, b))
+    game = brain.Brain(size=SIZE,
+                       display=display,
+                       tile_size=TILE_SIZE,
+                       cell_color=(r, g, b))
     while True:
-        #time.sleep(0.05)
-        game.display.fill((b//10, r//10, g//10))
-        if game.iterate() == False:
-            break
+        time.sleep(0.05)
+        game.display.fill((b//5, r//5, g//5))
+        game.iterate()
         game.draw()
         pygame.display.update()
